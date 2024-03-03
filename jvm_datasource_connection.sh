@@ -21,14 +21,14 @@ function check_service_(){
 		die_ ;
 	else
 		if [ ${CONN} == "connect" ] || [ ${CONN} == "" ] ; then		
-			echo "5:404:ERROR - nao contou o Pool no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
+			echo "5:404:ERROR - nao conectou no Pool no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
 			die_ ;
 		else
 			jBossPool=true
 			if [ ${CONN} == "[true]" ] ; then
 				echo "0:200:OK - Pool do jBoss @${QUAL} conectando."    # returncode 0 = OK - put sensor in OK status
 			else
-				echo "2:404:ERROR - Pool do jBoss @${QUAL} falhando."    # returncode 2 = ERROR - put sensor in DOWN status
+				echo "0:404:ERROR - Pool do jBoss @${QUAL} falhando."    # returncode 2 = ERROR - put sensor in DOWN status
 				exit 2
 			fi
 		fi

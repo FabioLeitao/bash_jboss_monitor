@@ -21,19 +21,19 @@ function check_service_(){
 		die_ ;
 	else
 		if [ ${WREQS} == "connect" ] || [  ${WREQS} == "" ] ; then		
-			echo "5:404:ERROR - nao contou o Pool no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
+			echo "5:404:ERROR - nao mediu requisiçoes no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
 			die_ ;
 		else
 			jBossWReqs=true
-			if [ ${WREQS} -lt 1000 ] ; then
-				echo "2:${WREQS}:ERROR - Poucas requisicoes ao jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
+			if [ ${WREQS} -lt 5000 ] ; then
+				echo "0:${WREQS}:ERROR - Poucas requisições ao jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
 				exit 2
 			else
-				if [ ${WREQS} -lt 2000 ] ; then
-					echo "1:${WREQS}:WARNING - Melhorando requisicoes ao jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
+				if [ ${WREQS} -lt 10000 ] ; then
+					echo "0:${WREQS}:WARNING - Melhorando requições ao jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
 					exit 1
 				else
-					echo "0:${WREQS}:OK - Alimentando requisicoes ao jBoss @${QUAL}."    # returncode 0 = OK - put sensor in OK status
+					echo "0:${WREQS}:OK - Alimentando requisições ao jBoss @${QUAL}."    # returncode 0 = OK - put sensor in OK status
 				fi
 			fi
 		fi

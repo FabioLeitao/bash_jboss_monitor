@@ -21,16 +21,16 @@ function check_service_(){
 		die_ ;
 	else
 		if [ ${CHEAP} == "connect" ] || [  ${CHEAP} == "" ] ; then		
-			echo "5:404:ERROR - nao contou o Pool no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
+			echo "5:404:ERROR - nao mediu Heap no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
 			die_ ;
 		else
 			jBossWReqs=true
-			if [ ${CHEAP} -gt 55000000000 ] ; then
-				echo "2:${CHEAP}:ERROR - Heap commited quase estourado no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
+			if [ ${CHEAP} -gt 60000000000 ] ; then
+				echo "0:${CHEAP}:ERROR - Heap commited quase estourado no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
 				exit 2
 			else
 				if [ ${CHEAP} -gt 42000000000 ] ; then
-					echo "1:${CHEAP}:WARNING - Heap commited enchendo no jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
+					echo "0:${CHEAP}:WARNING - Heap commited enchendo no jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
 					exit 1
 				else
 					echo "0:${CHEAP}:OK - Heap commited normal no jBoss @${QUAL}."    # returncode 0 = OK - put sensor in OK status

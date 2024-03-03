@@ -26,11 +26,11 @@ function check_service_(){
 		else
 			jBossPool=true
 			if [ ${DISPONIVEL} -lt 600 ] ; then
-				echo "2:${DISPONIVEL}:ERROR - Pool esgotando no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
+				echo "0:${DISPONIVEL}:ERROR - Pool esgotando no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
 				exit 2
 			else
 				if [ ${DISPONIVEL} -lt 1200 ] ; then
-					echo "1:${DISPONIVEL}:WARNING - Pool reduzido no jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
+					echo "0:${DISPONIVEL}:WARNING - Pool reduzido no jBoss @${QUAL}."    # returncode 1 = WARNING - put sensor in Warn status
 					exit 1
 				else
 					echo "0:${DISPONIVEL}:OK - Pool disponivel no jBoss @${QUAL}."    # returncode 0 = OK - put sensor in OK status

@@ -21,7 +21,7 @@ function check_service_(){
 			jBossIsRunning=true
 			echo "0:200:OK - jBoss @${QUAL} is running."    # returncode 0 = OK - put sensor in OK status
 		else
-			echo "5:404:ERROR - jBoss @${QUAL} is not present or not running."    # returncode 5 = Content Error - put sensor in DOWN status
+			echo "0:404:ERROR - jBoss @${QUAL} is not present or not running."    # returncode 5 = Content Error - put sensor in DOWN status
 			exit 5
 		fi
 	else

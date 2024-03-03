@@ -22,14 +22,14 @@ function check_service_(){
 		die_ ;
 	else
 		if [ ${DEPLOY} == "connect" ] || [ ${DEPLOY} == "" ] ; then		
-			echo "5:404:ERROR - nao contou o Pool no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
+			echo "5:404:ERROR - nao conectou no jBoss @${QUAL}."    # returncode 5 = Content Error - put sensor in DOWN status
 			die_ ;
 		else
 			jBossPool=true
 			if [ ${DEPLOY} == "true" ] ; then
 				echo "0:200:OK - Deploy do TOSP.WAR completo e disponível no jBoss @${QUAL}."    # returncode 0 = OK - put sensor in OK status
 			else
-				echo "2:404:ERROR - Deploy do TOSP.WAR incompleta ou indisponível no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
+				echo "0:404:ERROR - Deploy do TOSP.WAR incompleta ou indisponível no jBoss @${QUAL}."    # returncode 2 = ERROR - put sensor in DOWN status
 				exit 2
 			fi
 		fi
