@@ -1,6 +1,8 @@
+
 1.0.2 / 2024-03-05
 ==================
 
+  * corrigido para usar SELFIP
   * Adicionado contador de conexoes web estabelecidas pela porta tcp/8080
 
 1.0.1 / 2024-03-03
