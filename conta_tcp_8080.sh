@@ -14,9 +14,10 @@ GREPCLI="/usr/bin/grep"
 AWKCLI="/usr/bin/awk"
 SELFIP=`${IPCLI} ad | ${GREPCLI} -A 2 UP | ${GREPCLI} eth0 | ${GREPCLI} inet | ${AWKCLI} -F"/" '{printf $1}' | ${AWKCLI} '{printf $2}'`
 
+
 function check_service_(){
         jBossWeb=false
-	CONN=`${SSCLI} -tn | ${GREPCLI} ESTAB | ${AWKCLI} '{print $4}' | ${GREPCLI} .70]:8080 | ${WCCLI} -l`
+	CONN=`${SSCLI} -tn | ${GREPCLI} ESTAB | ${AWKCLI} '{print $4}' | ${GREPCLI} ${SELFIP}]:8080 | ${WCCLI} -l`
 	ULTIMA=$?
 	if [ ${ULTIMA} -ne 0 ] ; then
 		echo "4:502:ERROR - Web connections invalid @${QUAL}."    # returncode 4 = Protocol Error - put sensor in DOWN status
